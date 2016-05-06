@@ -346,6 +346,16 @@ giving types
 	outline:none;
 }
 
+
+
+.designee{
+	display:none;
+}
+
+.designation_button:checked ~ .designee{
+	display:block;
+}
+
 /*  ===========================
 giving levels
 ===========================*/
@@ -404,18 +414,18 @@ giving levels
 	}
 }
 
-.additional_amount{
+.other_amount{
 	margin: 50px 0 20px;
 	display: block;
 	width: 300px;
 	margin: 50px auto;
 }
 
-.additional_amount{
+.other_amount{
 	display: none;
 }
 
-.levels input:checked + label + .additional_amount{
+.levels input:checked + label + .other_amount{
 	display: block;
 }
 

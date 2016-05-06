@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
     // query for DF to be added later
-    var queryString = 'method=donate&response_format=json&v=1.0&def_preview=true&billing.address.country=Canada'
+    var queryString = 'method=donate&response_format=json&v=1.0&df_preview=true'
 
 //if all required fields are done make button blue
 $('.onetime .required').on("change",function() {
@@ -16,8 +16,8 @@ $('.onetime .required').on("change",function() {
       if (empty_flds) { 
           // do nothing
       } else {
-            $(".next.button").removeAttr("disabled");
-           $(".next.button").addClass("active");
+            $(".onetime .next.button").removeAttr("disabled");
+           $(".onetime .next.button").addClass("active");
   }
 });
 
@@ -32,8 +32,8 @@ $('.tribute .required').on("change",function() {
       if (empty_flds) { 
           // do nothing
       } else {
-            $(".next.button").removeAttr("disabled");
-           $(".next.button").addClass("active");
+            $(".tribute .next.button").removeAttr("disabled");
+           $(".tribute .next.button").addClass("active");
   }
 });
 
@@ -48,28 +48,41 @@ $('.monthly .required').on("change",function() {
        if (empty_flds) { 
            // do nothing
        } else {
-             $(".next.button").removeAttr("disabled");
-            $(".next.button").addClass("active");
+             $(".monthly .next.button").removeAttr("disabled");
+            $(".monthly .next.button").addClass("active");
    }
 });
 
 
-// stop all buttons from refreshing pag
+// stop all buttons from refreshing page
 
 $("button").click(function(e){
 e.preventDefault();
 });
 
-// show payment option when clicking button
+// show payment option when clicking Next button
 $(".personal-info").on("click", ".next.active", function(){
   $(".billing-info").removeClass("fade");
 })
 
-$(".giving-levels").on("click", "label", function(){
+$(".onetime .giving-levels").on("click", "label", function(){
   var id = $(this).attr("for");
-  $(".giving-desc").addClass("none");
+  $(".onetime .giving-desc").addClass("none");
   $("."+id).removeClass("none");
 })
+
+$(".monthly .giving-levels").on("click", "label", function(){
+  var id = $(this).attr("for");
+  $(".monthly .giving-desc").addClass("none");
+  $("."+id).removeClass("none");
+})
+
+$(".tribute .giving-levels").on("click", "label", function(){
+  var id = $(this).attr("for");
+  $(".tribute .giving-desc").addClass("none");
+  $("."+id).removeClass("none");
+})
+
 
 
 // init luminate extend with format and api_key
@@ -91,14 +104,13 @@ var getDF = function(result){
       form_id = fields[0].defaultValue;
       // get the form id for the form;
       $(".onetime .form_id").attr("value", form_id);
-      queryString = queryString + "&form_id=" + form_id;
       // loop trough giving levels and display (this way users can change giving levels)
       $.map(levels, function(n,i){
         var level_id = n.level_id;
         var level_name = n.name
         var radio = '<input type="radio" name="level_id" class="giving" data-param="level_id" id="'+level_id+'" value="'+ level_id + '"" data-value='+ level_id +' required=required><label for="'+ level_id +'">'+ level_name +'</label>'
         $(".onetime .giving-levels").append(radio);
-        $(".onetime .additional_amount").insertAfter(".onetime .levels input:last-of-type + label")
+        $(".onetime .other_amount").insertAfter(".onetime .levels input:last-of-type + label")
     });
   }
 
@@ -110,14 +122,13 @@ var getDF = function(result){
         form_id = fields[0].defaultValue;
         // get the form id for the form;
         $(".monthly .form_id").attr("value", form_id);
-        queryString = queryString + "&form_id=" + form_id;
         // loop trough giving levels and display (this way users can change giving levels)
         $.map(levels, function(n,i){
           var level_id = n.level_id;
           var level_name = n.name
           var radio = '<input type="radio" name="level_id" class="giving" data-param="level_id" id="'+level_id+'" value="'+ level_id + '"" data-value='+ level_id +' required=required><label for="'+ level_id +'">'+ level_name +'</label>'
           $(".monthly .giving-levels").append(radio);
-          $(".monthly .additional_amount").insertAfter(".monthly .levels input:last-of-type + label")
+          $(".monthly .other_amount").insertAfter(".monthly .levels input:last-of-type + label")
       });
     }
 
@@ -129,18 +140,17 @@ var getDF = function(result){
           form_id = fields[0].defaultValue;
           // get the form id for the form;
           $(".tribute .form_id").attr("value", form_id);
-          queryString = queryString + "&form_id=" + form_id;
           // loop trough giving levels and display (this way users can change giving levels)
           $.map(levels, function(n,i){
             var level_id = n.level_id;
             var level_name = n.name
             var radio = '<input type="radio" name="level_id" class="giving" data-param="level_id" id="'+level_id+'" value="'+ level_id + '"" data-value='+ level_id +' required=required><label for="'+ level_id +'">'+ level_name +'</label>'
             $(".tribute .giving-levels").append(radio);
-            $(".tribute .additional_amount").insertAfter(".tribute .levels input:last-of-type + label")
+            $(".tribute .other_amount").insertAfter(".tribute .levels input:last-of-type + label");
+
         });
       }
 
-  // bring in the proper form when user clicks the button
 var params = 'method=getDonationFormInfo&response_format=json&form_id=3563&v=1.0&api_key=ospcaapi';
     luminateExtend.api.request({
            api: 'donation', 
@@ -177,6 +187,28 @@ var params = 'method=getDonationFormInfo&response_format=json&form_id=3563&v=1.0
              data: paramsTribute
          });
 
+     var displayDesignees = function(r){
+                  var designee = r.getDesigneesResponse.designee;
+                  $.map(designee, function(n,i){
+                    var id = n.id;
+                    var name= n.name;
+                    $(".designee").append("<option id="+id+ " value="+id+">"+name+"</option>")
+                  })
+     }
+
+
+       var paramsDes = 'method=getDesignees&response_format=json&form_id=3563&v=1.0&api_key=ospcaapi';
+      luminateExtend.api.request({
+             api: 'donation', 
+             callback: {
+               success: displayDesignees
+               },
+               error: function(){
+                console.log("nope")
+             },
+             data: paramsDes
+           });
+
 
 
   $(".giving-type").on("click", function(){
@@ -185,29 +217,49 @@ var params = 'method=getDonationFormInfo&response_format=json&form_id=3563&v=1.0
       $(this).addClass("active");
   })
 
-  $(".onetime").on("click", function(){
+  $(".onetime-button").on("click", function(){
       $(".3563").removeClass("none");
       $("footer").removeClass("none");
       $("#5651").attr("checked", true);
 
     });
 
-    $(".monthly").on("click", function(){
+    $(".monthly-button").on("click", function(){
        $(".3560").removeClass("none");
       $("footer").removeClass("none");
       $("#5624").attr("checked", true);
       
     });
 
-    $(".tribute").on("click", function(){
+    $(".tribute-button").on("click", function(){
        $(".3562").removeClass("none");
       $("footer").removeClass("none");
       $("#5638").attr("checked", true);
     });
 
+    // id designation is wanted, show selection
+
 
   //make query string 
 var getValues = function(){
+
+if($("#single_designee option:selected")){
+  var desId = $("#single_designee option:selected").attr("id");
+
+  queryString = queryString + "&designated."+desId +".amount&designated."+desId+".id" ;
+}
+
+  var formType = $(".giving-type.active").attr("id");
+  if(formType === "onetime"){
+    queryString = queryString + "&form_id=3563";
+  }
+  if(formType === "monthly"){
+    queryString = queryString + "&form_id=3560";
+  }
+   if(formType === "tribute"){
+    queryString = queryString + "&form_id=3562";
+  }
+
   var val = $(".value-check").length;
   for(var i=0; i < val; i++) {
           var inputWithValue = $(".value-check")[i];
@@ -218,28 +270,30 @@ var getValues = function(){
              queryString = queryString + words
           };
       }
-  var radio = $(".radio-check").length;
+  var radio = $(".radio-check input:checked").length;
     for(var i=0; i < radio; i++) {
             var inputWithValue = $(".radio-check input:checked")[i];
             var paramName = $(inputWithValue).data("param");
             var paramValue = $(inputWithValue).data("value")
             var words = "&" + paramName + "=" + paramValue;
-            queryString = queryString + words
+            queryString = queryString + words;
         }
-}
 
-var check = $(".checkbox-check");
-if($(check).checked){
-    var paramName = 'donor.email_opt_in';
-     var paramValue = "true";
-     var words = "&" + paramName + "=" + paramValue;
-     queryString = queryString + words
-   }else{
-    var paramName = 'donor.email_opt_in';
-     var paramValue = "false";
-     var words = "&" + paramName + "=" + paramValue;
-     queryString = queryString + words
-   }
+  var check = $(".checkbox-check");
+        if($(check).checked){
+            var paramName = 'donor.email_opt_in';
+             var paramValue = "true";
+             var words = "&" + paramName + "=" + paramValue;
+             queryString = queryString + words
+             console.log(queryString)
+          }else{
+            var paramName = 'donor.email_opt_in';
+             var paramValue = "false";
+             var words = "&" + paramName + "=" + paramValue;
+             queryString = queryString + words;
+    }
+
+}
 
 
 var submitForm = function(){
@@ -251,7 +305,18 @@ luminateExtend.api.request({
              success: function(r){
                 console.log(r);
                 var error = r.donationResponse.errors.declineUserMessage;
-                alert(error)
+                if(error){alert(error)};
+                var validation = r.donationResponse.errors.fieldError;
+                if(validation){
+                  if(validation.isArray()){
+                      $.map(validation, function(n,i){
+                        alert(n);
+                      })
+                  }else{
+                    alert(validation)
+                  }
+                }
+                
 
              },
              error: function(){
@@ -270,7 +335,7 @@ luminateExtend.api.request({
     queryString = queryString.replace(/\s/g,"%20");
     console.log(queryString);
     submitForm();
-    queryString = 'method=donate&response_format=json&v=1.0&def_preview=true&billing.address.country=Canada'
+
   });
 
 
@@ -312,7 +377,7 @@ $(".chat").on("click", function(){
 
    // Scroll to after next
    $(".personal-info").on("click", ".next.active", function(){
-     $('body').scrollTo('#payment',{duration:'slow'});
+     $('body').scrollTo('.payment',{duration:'slow'});
    })
 
 

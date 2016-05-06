@@ -13,7 +13,7 @@
   		<div class="container">
 	  		<div class="left">
 				<div class="logo">	
-						<img src="images/logo.png" alt="Ontario SPCA and Humane Society">
+					<img src="images/logo.png" alt="Ontario SPCA and Humane Society">
 				</div>
 				<h1>Your gift changes animal's lives.</h1>
 				<p>Your compassion and generosity to the animals makes it possible for the Ontario SPCA to continue providing urgently needed care and shelter for thousands of animals suffering from injury, abuse or neglect each year in Ontario.</p>
@@ -44,7 +44,7 @@
 
   <section class="choose clearfix" id="choose">
   <div class="container">
-  	<a href="#choose" class="giving-type onetime">
+  	<a href="#choose" id="onetime" class="giving-type onetime-button">
   	<div class="svg-box">
 	<svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 200.677 200.677" style="enable-background:new 0 0 200.677 200.677;" xml:space="preserve" width="65" height="65">
 	<g>
@@ -56,7 +56,7 @@
 	</div>
   	<p>One time gift</p></a>
 
-  	<a href="#choose" class="giving-type monthly">
+  	<a href="#choose" id="monthly" class="giving-type monthly-button">
 	<div class="svg-box">
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="65" height="65" viewBox="0 0 371.244 371.244" style="enable-background:new 0 0 371.244 371.244;" xml:space="preserve">
 	<g>
@@ -65,7 +65,7 @@
 	</svg>
 	</div>
   	<p>Monthly gift</p></a>
-  	<a href="#choose" class="giving-type tribute">
+  	<a href="#choose" id="tribute" class="giving-type tribute-button">
 	<div class="svg-box left">	
 		<img aria-hidden="true" src="images/candle.png" alt="">
 	</div>
@@ -77,14 +77,14 @@
   </section>
 
   <!-- one time form -->
-  <form class="form-horizontal luminateApi donation-form onetime 3563 none" method="POST" action="https://secure3.convio.net/ospca/site/CRDonationAPI" data-luminateApi='{"callback": "donateCallback"}'>
+  <form class="form-horizontal luminateApi donation-form onetime 3563 none" enctype="multipart/form-data" method="POST" action="https://secure3.convio.net/ospca/site/CRDonationAPI" data-luminateApi='{"callback": "donateCallback"}'>
 
   <input class="form_id" type="hidden" style="display:none" name="form_id">
 
 	<section class="levels">
 	  <div class="giving-levels radio-check container" data-param="level_id">
 
-	  <input type="text" data-param="additional_amount"  class="additional_amount value-check" placeholder="Amount" >
+	  <input type="text" data-param="other_amount"  class="other_amount value-check" placeholder="Minimum $10 donation" >
 
 	  </div>
 	  
@@ -92,7 +92,7 @@
 	  	<p class="5647 giving-desc none"><span>$25</span> - Nourish animals in our care with special dietary needs.</p>
 	  	<p class="none giving-desc 5648"><span>$50</span> - Shelter an animal in need.</p>
 	  	<p class="none giving-desc 5649"><span>$100</span> - Spays or Neuters an animal in our care.</p>
-	  	<p class="none giving-desc 5651"><span>$250</span>- Full medical examination for a rescued animal.</p>
+	  	<p class="giving-desc 5651"><span>$250</span>- Full medical examination for a rescued animal.</p>
 	  	<p class="none giving-desc 5652"><span>$500</span> - Care and medical attention for animals rescued from irresponsible breeders or situations of neglect. </p>
 		<p class="none giving-desc 5653"><span>$1000</span> - Support for our rescue teams as they are called to action across the province.</p>
 	    <i class="fa fa-info" aria-hidden="true"></i>
@@ -101,9 +101,23 @@
 
 	<div class="container">
 		<section class="personal-info">
+			<h2>Designate my gift</h2>
+
+				<div class="designation">
+					<div>
+					<input type="radio" name="designation" id="use_gift"><label for="use_gift">Use my gift where it is needed most</label>
+					</div>
+
+					<input type="radio" class="designation_button" name="designation" id="desig_gift"><label for="desig_gift">I want to designate my gift to:</label>
+
+					<select name="single_designee" class="designee value-check" id="single_designee" >
+						<option></option>
+					</select>
+					</div>
+
 			  <h2>Personal Information</h2>
 
-			  <label for="donor.name.title">Title</label>
+			  <label for="donor.name.title">* Title</label>
 			     <select id="donor.name.title" data-param="donor.name.title"  class="donor_name_title  value-check" >
 			     <option></option>
 			     <option value="Mr.">Mr.</option>
@@ -113,25 +127,25 @@
 			     <option value="Dr.">Dr.</option>
 			     </select>
 				
-			<label for="donor.name.first">First Name</label>
+			<label for="donor.name.first">* First Name</label>
 			  <input type="text" id="donor.name.first" data-param="donor.name.first"  class="first_name  value-check required" required>
 
-			<label for="donor.name.last">Last Name</label>
+			<label for="donor.name.last">* Last Name</label>
 			<input type="text"  data-param="donor.name.last" id="donor.name.last" class="last_name value-check required" required>
 
-			<label for="donor.email">Email</label>
+			<label for="donor.email">* Email</label>
 			 <input type="email" data-param="donor.email" id="donor.email" class="email value-check required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 
-			 <label for="donor.address.street1">Address</label>
+			 <label for="donor.address.street1">* Address</label>
 			 <input type="text" id="donor.address.street1" data-param="donor.address.street1" class="donor_address value-check" >
 
-			 <label for="donor.address.city">City</label>
+			 <label for="donor.address.city">* City</label>
 			   <input type="text" id="donor.address.city" data-param="donor.address.city" class="donor_city value-check required" required>
 
-			 <label for="donor.address.zip">Postal Code / ZIP</label>
+			 <label for="donor.address.zip">* Postal Code / ZIP</label>
 			  <input type="text" id="donor.address.zip"  data-param="donor.address.zip" class="donor_postal value-check required" required>
 			
-			<label for="donor.address.state">Province / State</label>
+			<label for="donor.address.state">* Province / State</label>
 			  <select id="donor.address.state" data-param="donor.address.state"  class="donor_addr_state value-check required" required>
 			  <option></option>
 			  <option value="Alberta">Alberta</option>
@@ -228,26 +242,37 @@
 		  <input type="checkbox">billing information is same as donor information
 		</label>
  -->
-		<section id="payment" class="billing-info fade">
+		<section id="payment" class="billing-info fade payment">
 
 			<h2>Payment Information</h2>
-			<label for="billing.name.first">*First Name</label>
+
+			<label for="billing.name.title">*Title</label>
+			   <select id="billing.name.title" data-param="billing.name.title"  class="billing.name.title  value-check" >
+			   <option></option>
+			   <option value="Mr.">Mr.</option>
+			   <option value="Ms.">Ms.</option>
+			   <option value="Mrs.">Mrs.</option>
+			   <option value="Miss">Miss</option>
+			   <option value="Dr.">Dr.</option>
+			   </select>
+
+			<label for="billing.name.first">* First Name</label>
 			<input data-param="billing.name.first"  type="text" class="billing_first_name value-check" required>
 
-			<label for="billing.name.last">Last Name</label>
+			<label for="billing.name.last">* Last Name</label>
 			<input data-param="billing.name.last"  type="text" class="billing_last_name value-check" required>
 
-			<label for="billing.address.street1">Address</label>
+			<label for="billing.address.street1">* Address</label>
 			<input data-param="billing.address.street1"  type="text" class="billing_address value-check" required>
 
-			<label for="billing.address.city">City</label>
+			<label for="billing.address.city">* City</label>
 			<input data-param="billing.address.city"  type="text" class="billing_city value-check" required>
 
-			<label for="billing.address.zip">Postal Code / ZIP</label>
+			<label for="billing.address.zip">* Postal Code / ZIP</label>
 			<input data-param="billing.address.zip" class="value-check" type="billing_postal">
 
 
-			<label for="billing.address.state">Province / State</label>	
+			<label for="billing.address.state">* Province / State</label>	
 			  <select  data-param="billing.address.state" class="billing_addr_state value-check" required>
 			  <option></option>
 			  <option value="Alberta">Alberta</option>
@@ -327,7 +352,7 @@
 			  <option value="AP">AP - Armed Forces Pacific</option>
 			  <option value="None">None</option>
 			  </select>
-			  <label >Card Type</label>
+			  <label >* Card Type</label>
 			<div class="payment-types radio-check">
 
 				<input  type="radio" data-param="card_type" id="visa" name="payment-type" class="visa type" data-value="visa" required>
@@ -346,10 +371,10 @@
 			<label for="card_cvv">* CVV</label>
 			<input data-param="card_cvv"  type="number" class="cc_cvv credit value-check" required=required>
 
-			<label for="card_exp_date_month">Expiry Month (MM)</label>
+			<label for="card_exp_date_month">* Expiry Month (MM)</label>
 			<input data-param="card_exp_date_month"  type="number" class="exp_month credit value-check" placeholder="MM" required=required>
 
-			<label for="card_exp_date_year">Expiry Year (YYYY)</label>
+			<label for="card_exp_date_year">* Expiry Year (YYYY)</label>
 			<input data-param="card_exp_date_year"  type="number" class="year credit value-check" placeholder="YYYY" required=required>
 
 			<input type="submit" class="df-submit button active" value="Donate">
@@ -366,7 +391,7 @@
  	<section class="levels">
  	  <div class="giving-levels radio-check container" data-param="level_id">
 
- 	  <input type="text" data-param="additional_amount"  class="additional_amount value-check" placeholder="Amount" >
+ 	  <input type="text" data-param="other_amount"  class="other_amount value-check" placeholder="Minimum $10 donation" >
 
  	  </div>
  	  
@@ -374,7 +399,7 @@
  	  	<p class="5621 giving-desc none"><span>$15</span> - Contribute to the vaccinations of animals from disease.</p>
  	  	<p class="none giving-desc 5622"><span>$25</span> - Nourish animals in our care with special dietary needs.</p>
  	  	<p class="none giving-desc 5623"><span>$35</span> - Provide soft bedding and enrichment for a shelter animal.</p>
- 	  	<p class="none giving-desc 5624"><span>$50</span> - Shelter an animal in need.</p>
+ 	  	<p class="giving-desc 5624"><span>$50</span> - Shelter an animal in need.</p>
  	  	<p class="none giving-desc 5625"><span>$65</span> - Spay or Neuter an animal in our care. </p>
  	    <i class="fa fa-info" aria-hidden="true"></i>
  	   </div>
@@ -382,6 +407,18 @@
 
  	<div class="container">
  		<section class="personal-info">
+ 			<h2>Designate my gift</h2>
+
+ 				<div class="designation">
+ 					<div>
+ 					<input type="radio" name="designation-month" id="use_gift_month"><label for="use_gift_month">Use my gift where it is needed most</label>
+ 					</div>
+ 					<input type="radio" name="designation-month" class="designation_button" id="desig_gift_month"><label for="desig_gift_month">I want to designate my gift to:</label>
+
+ 					<select name="single_designee" class="designee value-check" id="single_designee" >
+ 						<option></option>
+ 					</select>
+ 				</div>
  			  <h2>Personal Information</h2>
 
  			  <label for="donor.name.title">Title</label>
@@ -496,8 +533,8 @@
  		<label for="donor.phone">Phone Number</label>
  			  <input type="tel" id="donor.phone"  data-param="donor.phone" class="donor_tel value-check">
 
- 		<label for="donor.email_opt_in">
- 		<input type="checkbox" id="donor.email_opt_in" data-param="donor.email_opt_in" class="opt-in checkbox-check">Yes, I would like to receive communication from OSPCA
+ 		<label for="donor.email_opt_in_monthly">
+ 		<input type="checkbox" id="donor.email_opt_in_monthly" data-param="donor.email_opt_in" class="opt-in checkbox-check">Yes, I would like to receive communication from OSPCA
  		</label>
  		<p class="manage-message">You can manage your email preferences and opt-ins at any time. We want the information you receive from us to remain of interest to you!</p>
 
@@ -509,7 +546,7 @@
  		  <input type="checkbox">billing information is same as donor information
  		</label>
   -->
- 		<section class="billing-info fade">
+ 		<section id="payment" class="billing-info fade payment">
 
  			<h2>Payment Information</h2>
  			<label for="billing.name.first">*First Name</label>
@@ -611,14 +648,14 @@
  			  <label >Card Type</label>
  			<div class="payment-types radio-check">
 
- 				<input  type="radio" data-param="card_type" id="visa" name="payment-type" class="visa type" data-value="visa" required>
- 				<label class="fa fa-cc-visa" aria-hidden="true" for="visa"><span class="icon-fallback-text">Visa</span></label>
+ 				<input  type="radio" data-param="card_type" id="visa_month" name="payment-type-month" class="visa type" data-value="visa" required>
+ 				<label class="fa fa-cc-visa" aria-hidden="true" for="visa_month"><span class="icon-fallback-text">Visa</span></label>
 
- 				<input id="mastercard" type="radio" data-param="card_type" name="payment-type" class="mastercard type" data-value="mastercard" required>
- 				<label class="mastercard fa fa-cc-mastercard" aria-hidden="true" for="mastercard"><span class="icon-fallback-text">Mastercard</span></label>
+ 				<input id="mastercard_month" type="radio" data-param="card_type" name="payment-type-month" class="mastercard type" data-value="mastercard" required>
+ 				<label class="mastercard fa fa-cc-mastercard" aria-hidden="true" for="mastercard_month"><span class="icon-fallback-text">Mastercard</span></label>
 
- 				<input type="radio" data-param="card_type" id="amex" name="payment-type" class="americanExpress type" data-value="American Express" required>
- 				<label class="americanExpress fa fa-cc-amex" aria-hidden="true" for="amex"><span class="icon-fallback-text">Amex</span></label>
+ 				<input type="radio" data-param="card_type" id="amex_month" name="payment-type-month" class="americanExpress type" data-value="American Express" required>
+ 				<label class="americanExpress fa fa-cc-amex" aria-hidden="true" for="amex_month"><span class="icon-fallback-text">Amex</span></label>
  			</div>
  		
  			<label for="card_number">* Card Number</label>
@@ -648,7 +685,7 @@
   	<section class="levels">
   	  <div class="giving-levels radio-check container" data-param="level_id">
 
-  	  <input type="text" data-param="additional_amount"  class="additional_amount value-check" placeholder="Amount" >
+  	  <input type="text" data-param="other_amount"  class="other_amount value-check" placeholder="Minimum $10 donation" >
 
   	  </div>
   	  
@@ -656,7 +693,7 @@
   	  	<p class="5643 giving-desc none"><span>$25</span> - Nourish animals in our care with special dietary needs.</p>
   	  	<p class="none giving-desc 5645"><span>$50</span> - Shelter an animal in need.</p>
   	  	<p class="none giving-desc 5637"><span>$100</span> - Spays or Neuters an animal in our care.</p>
-  	  	<p class="none giving-desc 5638"><span>$250</span>- Full medical examination for a rescued animal.</p>
+  	  	<p class="giving-desc 5638"><span>$250</span>- Full medical examination for a rescued animal.</p>
   	  	<p class="none giving-desc 5639"><span>$500</span> - Care and medical attention for animals rescued from irresponsible breeders or situations of neglect. </p>
   		<p class="none giving-desc 5640"><span>$1000</span> - Support for our rescue teams as they are called to action across the province.</p>
   	    <i class="fa fa-info" aria-hidden="true"></i>
@@ -665,6 +702,21 @@
 
   	<div class="container">
   		<section class="personal-info">
+  			<h2>Designate my gift</h2>
+
+  				<div class="designation">
+  					<div>
+  					<input type="radio" name="designation_tribute" id="use_gift_tribute"><label for="use_gift_tribute">Use my gift where it is needed most</label>
+  					</div>
+
+  					<input type="radio" class="designation_button" name="designation_tribute" class="designation_button" id="desig_gift_tribute"><label for="desig_gift_tribute">I want to Designate my gift to:</label>
+  				
+
+  					<select name="single_designee" class="designee value-check" id="single_designee" >
+  						<option></option>
+  					</select>
+  				</div>
+
   			  <h2>Personal Information</h2>
 
   			  <label for="donor.name.title">Title</label>
@@ -779,8 +831,8 @@
   		<label for="donor.phone">Phone Number</label>
   			  <input type="tel" id="donor.phone"  data-param="donor.phone" class="donor_tel value-check">
 
-  		<label for="donor.email_opt_in">
-  		<input type="checkbox" id="donor.email_opt_in" data-param="donor.email_opt_in" class="opt-in checkbox-check">Yes, I would like to receive communication from OSPCA
+  		<label for="donor.email_opt_in_tribute">
+  		<input type="checkbox" id="donor.email_opt_in_tribute" data-param="donor.email_opt_in" class="opt-in checkbox-check">Yes, I would like to receive communication from OSPCA
   		</label>
   		<p class="manage-message">You can manage your email preferences and opt-ins at any time. We want the information you receive from us to remain of interest to you!</p>
 
@@ -792,7 +844,7 @@
   		  <input type="checkbox">billing information is same as donor information
   		</label>
    -->
-  		<section class="billing-info fade">
+  		<section id="payment" class="billing-info fade payment">
 
   			<h2>Payment Information</h2>
   			<label for="billing.name.first">*First Name</label>
@@ -894,14 +946,14 @@
   			  <label >Card Type</label>
   			<div class="payment-types radio-check">
 
-  				<input  type="radio" data-param="card_type" id="visa" name="payment-type" class="visa type" data-value="visa" required>
-  				<label class="fa fa-cc-visa" aria-hidden="true" for="visa"><span class="icon-fallback-text">Visa</span></label>
+  				<input  type="radio" data-param="card_type" id="visa_tribute" name="payment-type-tribute" class="visa type" data-value="visa" required>
+  				<label class="fa fa-cc-visa" aria-hidden="true" for="visa_tribute"><span class="icon-fallback-text">Visa</span></label>
 
-  				<input id="mastercard" type="radio" data-param="card_type" name="payment-type" class="mastercard type" data-value="mastercard" required>
-  				<label class="mastercard fa fa-cc-mastercard" aria-hidden="true" for="mastercard"><span class="icon-fallback-text">Mastercard</span></label>
+  				<input id="mastercard_tribute" type="radio" data-param="card_type" name="payment-type-tribute" class="mastercard type" data-value="mastercard" required>
+  				<label class="mastercard fa fa-cc-mastercard" aria-hidden="true" for="mastercard_tribute"><span class="icon-fallback-text">Mastercard</span></label>
 
-  				<input type="radio" data-param="card_type" id="amex" name="payment-type" class="americanExpress type" data-value="American Express" required>
-  				<label class="americanExpress fa fa-cc-amex" aria-hidden="true" for="amex"><span class="icon-fallback-text">Amex</span></label>
+  				<input type="radio" data-param="card_type" id="amex_tribute" name="payment-type-tribute" class="americanExpress type" data-value="American Express" required>
+  				<label class="americanExpress fa fa-cc-amex" aria-hidden="true" for="amex_tribute"><span class="icon-fallback-text">Amex</span></label>
   			</div>
   		
   			<label for="card_number">* Card Number</label>
