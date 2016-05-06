@@ -127,16 +127,18 @@ h2{
 	}
 }
 
-.button{
+.button, input[type="submit"].df-submit{
 	background: #c0c0c0;
 	float: right;
 	text-transform: uppercase;
 	color: white;
 	padding: 10px 30px;
 	border-radius: 3px;
+	display: inline-block;
+	width: auto;
 }
 
-.active{
+.active, input[type="submit"].active{
 	background: $lightblue;
 
 }
@@ -306,17 +308,19 @@ giving types
 .choose{
 	background: $lightblue;
 	min-height: 15vh;
-	button{
+	a{
 		width:33%;
 		color: white;
 		padding: 30px 40px;
 		min-height:15vh;
+		display: inline-block;
+		color: white;
 		@include flex-align;
 		     float: left;
 		     text-align: left;
 		&:nth-of-type(2){
-			border-right: 1px solid $brightblue;
-			border-left: 1px solid $brightblue;
+			border-right: 2px solid $brightblue;
+			border-left: 2px solid $brightblue;
 		}
 		.svg-box{
 			margin-right: 20px;
@@ -332,6 +336,14 @@ giving types
 		}
 
 	}
+}
+
+.choose a.active{
+	background: $darkblue;
+}
+
+.choose a.active:focus{
+	outline:none;
 }
 
 /*  ===========================
@@ -484,6 +496,8 @@ form label{
 .df-submit{
 	padding-top: 20px;
 }
+
+
 
 
 /*  ===========================

@@ -44,7 +44,7 @@
 
   <section class="choose clearfix" id="choose">
   <div class="container">
-  	<button class="giving-type onetime">
+  	<a href="#choose" class="giving-type onetime">
   	<div class="svg-box">
 	<svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 200.677 200.677" style="enable-background:new 0 0 200.677 200.677;" xml:space="preserve" width="65" height="65">
 	<g>
@@ -54,9 +54,9 @@
 	</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
 	</svg>
 	</div>
-  	<p>One time gift</p></button>
+  	<p>One time gift</p></a>
 
-  	<button class="giving-type monthly">
+  	<a href="#choose" class="giving-type monthly">
 	<div class="svg-box">
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="65" height="65" viewBox="0 0 371.244 371.244" style="enable-background:new 0 0 371.244 371.244;" xml:space="preserve">
 	<g>
@@ -64,21 +64,20 @@
 	</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
 	</svg>
 	</div>
-  	<p>Monthly gift</p></button>
-  	<button class="giving-type tribute">
+  	<p>Monthly gift</p></a>
+  	<a href="#choose" class="giving-type tribute">
 	<div class="svg-box left">	
 		<img aria-hidden="true" src="images/candle.png" alt="">
 	</div>
 	<p class="left button3">
   	In tribute or in honour
-  	</p></button>
+  	</p></a>
   </div>
   	
   </section>
 
   <!-- one time form -->
-
-  <form class="form-horizontal luminateApi donation-form 3563 none" method="POST" action="https://secure3.convio.net/ospca/site/CRDonationAPI" data-luminateApi='{"callback": "donateCallback"}'>
+  <form class="form-horizontal luminateApi donation-form onetime 3563 none" method="POST" action="https://secure3.convio.net/ospca/site/CRDonationAPI" data-luminateApi='{"callback": "donateCallback"}'>
 
   <input class="form_id" type="hidden" style="display:none" name="form_id">
 
@@ -229,7 +228,7 @@
 		  <input type="checkbox">billing information is same as donor information
 		</label>
  -->
-		<section class="billing-info fade">
+		<section id="payment" class="billing-info fade">
 
 			<h2>Payment Information</h2>
 			<label for="billing.name.first">*First Name</label>
@@ -251,18 +250,18 @@
 			<label for="billing.address.state">Province / State</label>	
 			  <select  data-param="billing.address.state" class="billing_addr_state value-check" required>
 			  <option></option>
-			  <option  value="Alberta">Alberta</option>
-			  <option value="BC">BC - British Columbia</option>
-			  <option value="MB">MB - Manitoba</option>
-			  <option value="NB">NB - New Brunswick</option>
-			  <option value="NL">NL - Newfoundland and Labrador</option>
-			  <option value="NS">NS - Nova Scotia</option>
-			  <option value="NT">NT - Northwest Territories</option>
-			  <option value="NU">NU - Nunavut</option>
-			  <option value="ON">ON - Ontario</option>
-			  <option value="PE">PE - Prince Edward Island</option>
-			  <option value="QC">QC - Quebec</option>
-			  <option value="SK">SK - Saskatchewan</option>
+			  <option value="Alberta">Alberta</option>
+			  <option value="BC">British Columbia</option>
+			  <option value="MB">Manitoba</option>
+			  <option value="NB">New Brunswick</option>
+			  <option value="NL">Newfoundland and Labrador</option>
+			  <option value="NS">Nova Scotia</option>
+			  <option value="NT">Northwest Territories</option>
+			  <option value="NU">Nunavut</option>
+			  <option value="ON">Ontario</option>
+			  <option value="PE">Prince Edward Island</option>
+			  <option value="QC">Quebec</option>
+			  <option value="SK">Saskatchewan</option>
 			  <option value="YT">YT - Yukon</option>
 			  <option value="AK">AK - Alaska</option>
 			  <option value="AL">AL - Alabama</option>
@@ -298,7 +297,7 @@
 			  <option value="NJ">NJ - New Jersey</option>
 			  <option value="NM">NM - New Mexico</option>
 			  <option value="NV">NV - Nevada</option>
-			  <option value="New York">NY - New York</option>
+			  <option value="NY">NY - New York</option>
 			  <option value="OH">OH - Ohio</option>
 			  <option value="OK">OK - Oklahoma</option>
 			  <option value="OR">OR - Oregon</option>
@@ -353,10 +352,574 @@
 			<label for="card_exp_date_year">Expiry Year (YYYY)</label>
 			<input data-param="card_exp_date_year"  type="number" class="year credit value-check" placeholder="YYYY" required=required>
 
-			<input type="submit" class="df-submit button active" value="submit">
+			<input type="submit" class="df-submit button active" value="Donate">
 		</section>
 	</div>
  </form>
+
+ <!-- Monthly form -->
+
+  <form class="form-horizontal luminateApi donation-form monthly 3560 none" method="POST" action="https://secure3.convio.net/ospca/site/CRDonationAPI" data-luminateApi='{"callback": "donateCallback"}'>
+
+   <input class="form_id" type="hidden" style="display:none" name="form_id">
+
+ 	<section class="levels">
+ 	  <div class="giving-levels radio-check container" data-param="level_id">
+
+ 	  <input type="text" data-param="additional_amount"  class="additional_amount value-check" placeholder="Amount" >
+
+ 	  </div>
+ 	  
+ 	  <div class="level-name">
+ 	  	<p class="5621 giving-desc none"><span>$15</span> - Contribute to the vaccinations of animals from disease.</p>
+ 	  	<p class="none giving-desc 5622"><span>$25</span> - Nourish animals in our care with special dietary needs.</p>
+ 	  	<p class="none giving-desc 5623"><span>$35</span> - Provide soft bedding and enrichment for a shelter animal.</p>
+ 	  	<p class="none giving-desc 5624"><span>$50</span> - Shelter an animal in need.</p>
+ 	  	<p class="none giving-desc 5625"><span>$65</span> - Spay or Neuter an animal in our care. </p>
+ 	    <i class="fa fa-info" aria-hidden="true"></i>
+ 	   </div>
+ 	</section>
+
+ 	<div class="container">
+ 		<section class="personal-info">
+ 			  <h2>Personal Information</h2>
+
+ 			  <label for="donor.name.title">Title</label>
+ 			     <select id="donor.name.title" data-param="donor.name.title"  class="donor_name_title  value-check" >
+ 			     <option></option>
+ 			     <option value="Mr.">Mr.</option>
+ 			     <option value="Ms.">Ms.</option>
+ 			     <option value="Mrs.">Mrs.</option>
+ 			     <option value="Miss">Miss</option>
+ 			     <option value="Dr.">Dr.</option>
+ 			     </select>
+ 				
+ 			<label for="donor.name.first">First Name</label>
+ 			  <input type="text" id="donor.name.first" data-param="donor.name.first"  class="first_name  value-check required" required>
+
+ 			<label for="donor.name.last">Last Name</label>
+ 			<input type="text"  data-param="donor.name.last" id="donor.name.last" class="last_name value-check required" required>
+
+ 			<label for="donor.email">Email</label>
+ 			 <input type="email" data-param="donor.email" id="donor.email" class="email value-check required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+ 			 <label for="donor.address.street1">Address</label>
+ 			 <input type="text" id="donor.address.street1" data-param="donor.address.street1" class="donor_address value-check" >
+
+ 			 <label for="donor.address.city">City</label>
+ 			   <input type="text" id="donor.address.city" data-param="donor.address.city" class="donor_city value-check required" required>
+
+ 			 <label for="donor.address.zip">Postal Code / ZIP</label>
+ 			  <input type="text" id="donor.address.zip"  data-param="donor.address.zip" class="donor_postal value-check required" required>
+ 			
+ 			<label for="donor.address.state">Province / State</label>
+ 			  <select id="donor.address.state" data-param="donor.address.state"  class="donor_addr_state value-check required" required>
+ 			  <option></option>
+ 			  <option value="Alberta">Alberta</option>
+ 			  <option value="BC">British Columbia</option>
+ 			  <option value="MB">Manitoba</option>
+ 			  <option value="NB">New Brunswick</option>
+ 			  <option value="NL">Newfoundland and Labrador</option>
+ 			  <option value="NS">Nova Scotia</option>
+ 			  <option value="NT">Northwest Territories</option>
+ 			  <option value="NU">Nunavut</option>
+ 			  <option value="ON">Ontario</option>
+ 			  <option value="PE">Prince Edward Island</option>
+ 			  <option value="QC">Quebec</option>
+ 			  <option value="SK">Saskatchewan</option>
+ 			  <option value="YT">YT - Yukon</option>
+ 			  <option value="AK">AK - Alaska</option>
+ 			  <option value="AL">AL - Alabama</option>
+ 			  <option value="AR">AR - Arkansas</option>
+ 			  <option value="AZ">AZ - Arizona</option>
+ 			  <option value="CA">CA - California</option>
+ 			  <option value="CO">CO - Colorado</option>
+ 			  <option value="CT">CT - Connecticut</option>
+ 			  <option value="DC">DC - District of Columbia</option>
+ 			  <option value="DE">DE - Delaware</option>
+ 			  <option value="Florida">Florida</option>
+ 			  <option value="GA">GA - Georgia</option>
+ 			  <option value="HI">HI - Hawaii</option>
+ 			  <option value="IA">IA - Iowa</option>
+ 			  <option value="ID">ID - Idaho</option>
+ 			  <option value="IL">IL - Illinois</option>
+ 			  <option value="IN">IN - Indiana</option>
+ 			  <option value="KS">KS - Kansas</option>
+ 			  <option value="KY">KY - Kentucky</option>
+ 			  <option value="LA">LA - Louisiana</option>
+ 			  <option value="MA">MA - Massachusetts</option>
+ 			  <option value="MD">MD - Maryland</option>
+ 			  <option value="ME">ME - Maine</option>
+ 			  <option value="MI">MI - Michigan</option>
+ 			  <option value="MN">MN - Minnesota</option>
+ 			  <option value="MO">MO - Missouri</option>
+ 			  <option value="MS">MS - Mississippi</option>
+ 			  <option value="MT">MT - Montana</option>
+ 			  <option value="NC">NC - North Carolina</option>
+ 			  <option value="ND">ND - North Dakota</option>
+ 			  <option value="NE">NE - Nebraska</option>
+ 			  <option value="NH">NH - New Hampshire</option>
+ 			  <option value="NJ">NJ - New Jersey</option>
+ 			  <option value="NM">NM - New Mexico</option>
+ 			  <option value="NV">NV - Nevada</option>
+ 			  <option value="NY">NY - New York</option>
+ 			  <option value="OH">OH - Ohio</option>
+ 			  <option value="OK">OK - Oklahoma</option>
+ 			  <option value="OR">OR - Oregon</option>
+ 			  <option value="PA">PA - Pennsylvania</option>
+ 			  <option value="RI">RI - Rhode Island</option>
+ 			  <option value="SC">SC - South Carolina</option>
+ 			  <option value="SD">SD - South Dakota</option>
+ 			  <option value="TN">TN - Tennessee</option>
+ 			  <option value="TX">TX - Texas</option>
+ 			  <option value="UT">UT - Utah</option>
+ 			  <option value="VA">VA - Virginia</option>
+ 			  <option value="VT">VT - Vermont</option>
+ 			  <option value="WA">WA - Washington</option>
+ 			  <option value="WI">WI - Wisconsin</option>
+ 			  <option value="WV">WV - West Virginia</option>
+ 			  <option value="WY">WY - Wyoming</option>
+ 			  <option value="AS">AS - American Samoa</option>
+ 			  <option value="FM">FM - Federated States of Micronesia</option>
+ 			  <option value="GU">GU - Guam</option>
+ 			  <option value="MH">MH - Marshall Islands</option>
+ 			  <option value="MP">MP - Northern Mariana Islands</option>
+ 			  <option value="PR">PR - Puerto Rico</option>
+ 			  <option value="PW">PW - Palau</option>
+ 			  <option value="VI">VI - Virgin Islands</option>
+ 			  <option value="AA">AA - Armed Forces Americas</option>
+ 			  <option value="AE">AE - Armed Forces</option>
+ 			  <option value="AP">AP - Armed Forces Pacific</option>
+ 			  <option value="None">None</option>
+ 			  </select>
+
+ 		<label for="donor.phone">Phone Number</label>
+ 			  <input type="tel" id="donor.phone"  data-param="donor.phone" class="donor_tel value-check">
+
+ 		<label for="donor.email_opt_in">
+ 		<input type="checkbox" id="donor.email_opt_in" data-param="donor.email_opt_in" class="opt-in checkbox-check">Yes, I would like to receive communication from OSPCA
+ 		</label>
+ 		<p class="manage-message">You can manage your email preferences and opt-ins at any time. We want the information you receive from us to remain of interest to you!</p>
+
+ 		<button class="next button" disabled>Next</button>
+ 		</section>
+
+
+ 	<!-- 	<label>
+ 		  <input type="checkbox">billing information is same as donor information
+ 		</label>
+  -->
+ 		<section class="billing-info fade">
+
+ 			<h2>Payment Information</h2>
+ 			<label for="billing.name.first">*First Name</label>
+ 			<input data-param="billing.name.first"  type="text" class="billing_first_name value-check" required>
+
+ 			<label for="billing.name.last">Last Name</label>
+ 			<input data-param="billing.name.last"  type="text" class="billing_last_name value-check" required>
+
+ 			<label for="billing.address.street1">Address</label>
+ 			<input data-param="billing.address.street1"  type="text" class="billing_address value-check" required>
+
+ 			<label for="billing.address.city">City</label>
+ 			<input data-param="billing.address.city"  type="text" class="billing_city value-check" required>
+
+ 			<label for="billing.address.zip">Postal Code / ZIP</label>
+ 			<input data-param="billing.address.zip" class="value-check" type="billing_postal">
+
+
+ 			<label for="billing.address.state">Province / State</label>	
+ 			  <select  data-param="billing.address.state" class="billing_addr_state value-check" required>
+ 			  <option></option>
+ 			  <option value="Alberta">Alberta</option>
+ 			  <option value="BC">British Columbia</option>
+ 			  <option value="MB">Manitoba</option>
+ 			  <option value="NB">New Brunswick</option>
+ 			  <option value="NL">Newfoundland and Labrador</option>
+ 			  <option value="NS">Nova Scotia</option>
+ 			  <option value="NT">Northwest Territories</option>
+ 			  <option value="NU">Nunavut</option>
+ 			  <option value="ON">Ontario</option>
+ 			  <option value="PE">Prince Edward Island</option>
+ 			  <option value="QC">Quebec</option>
+ 			  <option value="SK">Saskatchewan</option>
+ 			  <option value="YT">YT - Yukon</option>
+ 			  <option value="AK">AK - Alaska</option>
+ 			  <option value="AL">AL - Alabama</option>
+ 			  <option value="AR">AR - Arkansas</option>
+ 			  <option value="AZ">AZ - Arizona</option>
+ 			  <option value="CA">CA - California</option>
+ 			  <option value="CO">CO - Colorado</option>
+ 			  <option value="CT">CT - Connecticut</option>
+ 			  <option value="DC">DC - District of Columbia</option>
+ 			  <option value="DE">DE - Delaware</option>
+ 			  <option value="Florida">Florida</option>
+ 			  <option value="GA">GA - Georgia</option>
+ 			  <option value="HI">HI - Hawaii</option>
+ 			  <option value="IA">IA - Iowa</option>
+ 			  <option value="ID">ID - Idaho</option>
+ 			  <option value="IL">IL - Illinois</option>
+ 			  <option value="IN">IN - Indiana</option>
+ 			  <option value="KS">KS - Kansas</option>
+ 			  <option value="KY">KY - Kentucky</option>
+ 			  <option value="LA">LA - Louisiana</option>
+ 			  <option value="MA">MA - Massachusetts</option>
+ 			  <option value="MD">MD - Maryland</option>
+ 			  <option value="ME">ME - Maine</option>
+ 			  <option value="MI">MI - Michigan</option>
+ 			  <option value="MN">MN - Minnesota</option>
+ 			  <option value="MO">MO - Missouri</option>
+ 			  <option value="MS">MS - Mississippi</option>
+ 			  <option value="MT">MT - Montana</option>
+ 			  <option value="NC">NC - North Carolina</option>
+ 			  <option value="ND">ND - North Dakota</option>
+ 			  <option value="NE">NE - Nebraska</option>
+ 			  <option value="NH">NH - New Hampshire</option>
+ 			  <option value="NJ">NJ - New Jersey</option>
+ 			  <option value="NM">NM - New Mexico</option>
+ 			  <option value="NV">NV - Nevada</option>
+ 			  <option value="NY">NY - New York</option>
+ 			  <option value="OH">OH - Ohio</option>
+ 			  <option value="OK">OK - Oklahoma</option>
+ 			  <option value="OR">OR - Oregon</option>
+ 			  <option value="PA">PA - Pennsylvania</option>
+ 			  <option value="RI">RI - Rhode Island</option>
+ 			  <option value="SC">SC - South Carolina</option>
+ 			  <option value="SD">SD - South Dakota</option>
+ 			  <option value="TN">TN - Tennessee</option>
+ 			  <option value="TX">TX - Texas</option>
+ 			  <option value="UT">UT - Utah</option>
+ 			  <option value="VA">VA - Virginia</option>
+ 			  <option value="VT">VT - Vermont</option>
+ 			  <option value="WA">WA - Washington</option>
+ 			  <option value="WI">WI - Wisconsin</option>
+ 			  <option value="WV">WV - West Virginia</option>
+ 			  <option value="WY">WY - Wyoming</option>
+ 			  <option value="AS">AS - American Samoa</option>
+ 			  <option value="FM">FM - Federated States of Micronesia</option>
+ 			  <option value="GU">GU - Guam</option>
+ 			  <option value="MH">MH - Marshall Islands</option>
+ 			  <option value="MP">MP - Northern Mariana Islands</option>
+ 			  <option value="PR">PR - Puerto Rico</option>
+ 			  <option value="PW">PW - Palau</option>
+ 			  <option value="VI">VI - Virgin Islands</option>
+ 			  <option value="AA">AA - Armed Forces Americas</option>
+ 			  <option value="AE">AE - Armed Forces</option>
+ 			  <option value="AP">AP - Armed Forces Pacific</option>
+ 			  <option value="None">None</option>
+ 			  </select>
+ 			  <label >Card Type</label>
+ 			<div class="payment-types radio-check">
+
+ 				<input  type="radio" data-param="card_type" id="visa" name="payment-type" class="visa type" data-value="visa" required>
+ 				<label class="fa fa-cc-visa" aria-hidden="true" for="visa"><span class="icon-fallback-text">Visa</span></label>
+
+ 				<input id="mastercard" type="radio" data-param="card_type" name="payment-type" class="mastercard type" data-value="mastercard" required>
+ 				<label class="mastercard fa fa-cc-mastercard" aria-hidden="true" for="mastercard"><span class="icon-fallback-text">Mastercard</span></label>
+
+ 				<input type="radio" data-param="card_type" id="amex" name="payment-type" class="americanExpress type" data-value="American Express" required>
+ 				<label class="americanExpress fa fa-cc-amex" aria-hidden="true" for="amex"><span class="icon-fallback-text">Amex</span></label>
+ 			</div>
+ 		
+ 			<label for="card_number">* Card Number</label>
+ 			<input  data-param="card_number" type="number" class="cc_num credit value-check" required=required>
+
+ 			<label for="card_cvv">* CVV</label>
+ 			<input data-param="card_cvv"  type="number" class="cc_cvv credit value-check" required=required>
+
+ 			<label for="card_exp_date_month">Expiry Month (MM)</label>
+ 			<input data-param="card_exp_date_month"  type="number" class="exp_month credit value-check" placeholder="MM" required=required>
+
+ 			<label for="card_exp_date_year">Expiry Year (YYYY)</label>
+ 			<input data-param="card_exp_date_year"  type="number" class="year credit value-check" placeholder="YYYY" required=required>
+
+ 			<input type="submit" class="df-submit button active" value="Donate">
+ 		</section>
+ 	</div>
+  </form>
+
+
+  <!-- Tribute -->
+
+   <form class="form-horizontal luminateApi donation-form tribute 3562 none" method="POST" action="https://secure3.convio.net/ospca/site/CRDonationAPI" data-luminateApi='{"callback": "donateCallback"}'>
+
+    <input class="form_id" type="hidden" style="display:none" name="form_id">
+
+  	<section class="levels">
+  	  <div class="giving-levels radio-check container" data-param="level_id">
+
+  	  <input type="text" data-param="additional_amount"  class="additional_amount value-check" placeholder="Amount" >
+
+  	  </div>
+  	  
+  	  <div class="level-name">
+  	  	<p class="5643 giving-desc none"><span>$25</span> - Nourish animals in our care with special dietary needs.</p>
+  	  	<p class="none giving-desc 5645"><span>$50</span> - Shelter an animal in need.</p>
+  	  	<p class="none giving-desc 5637"><span>$100</span> - Spays or Neuters an animal in our care.</p>
+  	  	<p class="none giving-desc 5638"><span>$250</span>- Full medical examination for a rescued animal.</p>
+  	  	<p class="none giving-desc 5639"><span>$500</span> - Care and medical attention for animals rescued from irresponsible breeders or situations of neglect. </p>
+  		<p class="none giving-desc 5640"><span>$1000</span> - Support for our rescue teams as they are called to action across the province.</p>
+  	    <i class="fa fa-info" aria-hidden="true"></i>
+  	   </div>
+  	</section>
+
+  	<div class="container">
+  		<section class="personal-info">
+  			  <h2>Personal Information</h2>
+
+  			  <label for="donor.name.title">Title</label>
+  			     <select id="donor.name.title" data-param="donor.name.title"  class="donor_name_title  value-check" >
+  			     <option></option>
+  			     <option value="Mr.">Mr.</option>
+  			     <option value="Ms.">Ms.</option>
+  			     <option value="Mrs.">Mrs.</option>
+  			     <option value="Miss">Miss</option>
+  			     <option value="Dr.">Dr.</option>
+  			     </select>
+  				
+  			<label for="donor.name.first">First Name</label>
+  			  <input type="text" id="donor.name.first" data-param="donor.name.first"  class="first_name  value-check required" required>
+
+  			<label for="donor.name.last">Last Name</label>
+  			<input type="text"  data-param="donor.name.last" id="donor.name.last" class="last_name value-check required" required>
+
+  			<label for="donor.email">Email</label>
+  			 <input type="email" data-param="donor.email" id="donor.email" class="email value-check required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+  			 <label for="donor.address.street1">Address</label>
+  			 <input type="text" id="donor.address.street1" data-param="donor.address.street1" class="donor_address value-check" >
+
+  			 <label for="donor.address.city">City</label>
+  			   <input type="text" id="donor.address.city" data-param="donor.address.city" class="donor_city value-check required" required>
+
+  			 <label for="donor.address.zip">Postal Code / ZIP</label>
+  			  <input type="text" id="donor.address.zip"  data-param="donor.address.zip" class="donor_postal value-check required" required>
+  			
+  			<label for="donor.address.state">Province / State</label>
+  			  <select id="donor.address.state" data-param="donor.address.state"  class="donor_addr_state value-check required" required>
+  			  <option></option>
+  			  <option value="Alberta">Alberta</option>
+  			  <option value="BC">British Columbia</option>
+  			  <option value="MB">Manitoba</option>
+  			  <option value="NB">New Brunswick</option>
+  			  <option value="NL">Newfoundland and Labrador</option>
+  			  <option value="NS">Nova Scotia</option>
+  			  <option value="NT">Northwest Territories</option>
+  			  <option value="NU">Nunavut</option>
+  			  <option value="ON">Ontario</option>
+  			  <option value="PE">Prince Edward Island</option>
+  			  <option value="QC">Quebec</option>
+  			  <option value="SK">Saskatchewan</option>
+  			  <option value="YT">YT - Yukon</option>
+  			  <option value="AK">AK - Alaska</option>
+  			  <option value="AL">AL - Alabama</option>
+  			  <option value="AR">AR - Arkansas</option>
+  			  <option value="AZ">AZ - Arizona</option>
+  			  <option value="CA">CA - California</option>
+  			  <option value="CO">CO - Colorado</option>
+  			  <option value="CT">CT - Connecticut</option>
+  			  <option value="DC">DC - District of Columbia</option>
+  			  <option value="DE">DE - Delaware</option>
+  			  <option value="Florida">Florida</option>
+  			  <option value="GA">GA - Georgia</option>
+  			  <option value="HI">HI - Hawaii</option>
+  			  <option value="IA">IA - Iowa</option>
+  			  <option value="ID">ID - Idaho</option>
+  			  <option value="IL">IL - Illinois</option>
+  			  <option value="IN">IN - Indiana</option>
+  			  <option value="KS">KS - Kansas</option>
+  			  <option value="KY">KY - Kentucky</option>
+  			  <option value="LA">LA - Louisiana</option>
+  			  <option value="MA">MA - Massachusetts</option>
+  			  <option value="MD">MD - Maryland</option>
+  			  <option value="ME">ME - Maine</option>
+  			  <option value="MI">MI - Michigan</option>
+  			  <option value="MN">MN - Minnesota</option>
+  			  <option value="MO">MO - Missouri</option>
+  			  <option value="MS">MS - Mississippi</option>
+  			  <option value="MT">MT - Montana</option>
+  			  <option value="NC">NC - North Carolina</option>
+  			  <option value="ND">ND - North Dakota</option>
+  			  <option value="NE">NE - Nebraska</option>
+  			  <option value="NH">NH - New Hampshire</option>
+  			  <option value="NJ">NJ - New Jersey</option>
+  			  <option value="NM">NM - New Mexico</option>
+  			  <option value="NV">NV - Nevada</option>
+  			  <option value="NY">NY - New York</option>
+  			  <option value="OH">OH - Ohio</option>
+  			  <option value="OK">OK - Oklahoma</option>
+  			  <option value="OR">OR - Oregon</option>
+  			  <option value="PA">PA - Pennsylvania</option>
+  			  <option value="RI">RI - Rhode Island</option>
+  			  <option value="SC">SC - South Carolina</option>
+  			  <option value="SD">SD - South Dakota</option>
+  			  <option value="TN">TN - Tennessee</option>
+  			  <option value="TX">TX - Texas</option>
+  			  <option value="UT">UT - Utah</option>
+  			  <option value="VA">VA - Virginia</option>
+  			  <option value="VT">VT - Vermont</option>
+  			  <option value="WA">WA - Washington</option>
+  			  <option value="WI">WI - Wisconsin</option>
+  			  <option value="WV">WV - West Virginia</option>
+  			  <option value="WY">WY - Wyoming</option>
+  			  <option value="AS">AS - American Samoa</option>
+  			  <option value="FM">FM - Federated States of Micronesia</option>
+  			  <option value="GU">GU - Guam</option>
+  			  <option value="MH">MH - Marshall Islands</option>
+  			  <option value="MP">MP - Northern Mariana Islands</option>
+  			  <option value="PR">PR - Puerto Rico</option>
+  			  <option value="PW">PW - Palau</option>
+  			  <option value="VI">VI - Virgin Islands</option>
+  			  <option value="AA">AA - Armed Forces Americas</option>
+  			  <option value="AE">AE - Armed Forces</option>
+  			  <option value="AP">AP - Armed Forces Pacific</option>
+  			  <option value="None">None</option>
+  			  </select>
+
+  		<label for="donor.phone">Phone Number</label>
+  			  <input type="tel" id="donor.phone"  data-param="donor.phone" class="donor_tel value-check">
+
+  		<label for="donor.email_opt_in">
+  		<input type="checkbox" id="donor.email_opt_in" data-param="donor.email_opt_in" class="opt-in checkbox-check">Yes, I would like to receive communication from OSPCA
+  		</label>
+  		<p class="manage-message">You can manage your email preferences and opt-ins at any time. We want the information you receive from us to remain of interest to you!</p>
+
+  		<button class="next button" disabled>Next</button>
+  		</section>
+
+
+  	<!-- 	<label>
+  		  <input type="checkbox">billing information is same as donor information
+  		</label>
+   -->
+  		<section class="billing-info fade">
+
+  			<h2>Payment Information</h2>
+  			<label for="billing.name.first">*First Name</label>
+  			<input data-param="billing.name.first"  type="text" class="billing_first_name value-check" required>
+
+  			<label for="billing.name.last">Last Name</label>
+  			<input data-param="billing.name.last"  type="text" class="billing_last_name value-check" required>
+
+  			<label for="billing.address.street1">Address</label>
+  			<input data-param="billing.address.street1"  type="text" class="billing_address value-check" required>
+
+  			<label for="billing.address.city">City</label>
+  			<input data-param="billing.address.city"  type="text" class="billing_city value-check" required>
+
+  			<label for="billing.address.zip">Postal Code / ZIP</label>
+  			<input data-param="billing.address.zip" class="value-check" type="billing_postal">
+
+
+  			<label for="billing.address.state">Province / State</label>	
+  			  <select  data-param="billing.address.state" class="billing_addr_state value-check" required>
+  			  <option></option>
+  			  <option value="Alberta">Alberta</option>
+  			  <option value="BC">British Columbia</option>
+  			  <option value="MB">Manitoba</option>
+  			  <option value="NB">New Brunswick</option>
+  			  <option value="NL">Newfoundland and Labrador</option>
+  			  <option value="NS">Nova Scotia</option>
+  			  <option value="NT">Northwest Territories</option>
+  			  <option value="NU">Nunavut</option>
+  			  <option value="ON">Ontario</option>
+  			  <option value="PE">Prince Edward Island</option>
+  			  <option value="QC">Quebec</option>
+  			  <option value="SK">Saskatchewan</option>
+  			  <option value="YT">YT - Yukon</option>
+  			  <option value="AK">AK - Alaska</option>
+  			  <option value="AL">AL - Alabama</option>
+  			  <option value="AR">AR - Arkansas</option>
+  			  <option value="AZ">AZ - Arizona</option>
+  			  <option value="CA">CA - California</option>
+  			  <option value="CO">CO - Colorado</option>
+  			  <option value="CT">CT - Connecticut</option>
+  			  <option value="DC">DC - District of Columbia</option>
+  			  <option value="DE">DE - Delaware</option>
+  			  <option value="Florida">Florida</option>
+  			  <option value="GA">GA - Georgia</option>
+  			  <option value="HI">HI - Hawaii</option>
+  			  <option value="IA">IA - Iowa</option>
+  			  <option value="ID">ID - Idaho</option>
+  			  <option value="IL">IL - Illinois</option>
+  			  <option value="IN">IN - Indiana</option>
+  			  <option value="KS">KS - Kansas</option>
+  			  <option value="KY">KY - Kentucky</option>
+  			  <option value="LA">LA - Louisiana</option>
+  			  <option value="MA">MA - Massachusetts</option>
+  			  <option value="MD">MD - Maryland</option>
+  			  <option value="ME">ME - Maine</option>
+  			  <option value="MI">MI - Michigan</option>
+  			  <option value="MN">MN - Minnesota</option>
+  			  <option value="MO">MO - Missouri</option>
+  			  <option value="MS">MS - Mississippi</option>
+  			  <option value="MT">MT - Montana</option>
+  			  <option value="NC">NC - North Carolina</option>
+  			  <option value="ND">ND - North Dakota</option>
+  			  <option value="NE">NE - Nebraska</option>
+  			  <option value="NH">NH - New Hampshire</option>
+  			  <option value="NJ">NJ - New Jersey</option>
+  			  <option value="NM">NM - New Mexico</option>
+  			  <option value="NV">NV - Nevada</option>
+  			  <option value="NY">NY - New York</option>
+  			  <option value="OH">OH - Ohio</option>
+  			  <option value="OK">OK - Oklahoma</option>
+  			  <option value="OR">OR - Oregon</option>
+  			  <option value="PA">PA - Pennsylvania</option>
+  			  <option value="RI">RI - Rhode Island</option>
+  			  <option value="SC">SC - South Carolina</option>
+  			  <option value="SD">SD - South Dakota</option>
+  			  <option value="TN">TN - Tennessee</option>
+  			  <option value="TX">TX - Texas</option>
+  			  <option value="UT">UT - Utah</option>
+  			  <option value="VA">VA - Virginia</option>
+  			  <option value="VT">VT - Vermont</option>
+  			  <option value="WA">WA - Washington</option>
+  			  <option value="WI">WI - Wisconsin</option>
+  			  <option value="WV">WV - West Virginia</option>
+  			  <option value="WY">WY - Wyoming</option>
+  			  <option value="AS">AS - American Samoa</option>
+  			  <option value="FM">FM - Federated States of Micronesia</option>
+  			  <option value="GU">GU - Guam</option>
+  			  <option value="MH">MH - Marshall Islands</option>
+  			  <option value="MP">MP - Northern Mariana Islands</option>
+  			  <option value="PR">PR - Puerto Rico</option>
+  			  <option value="PW">PW - Palau</option>
+  			  <option value="VI">VI - Virgin Islands</option>
+  			  <option value="AA">AA - Armed Forces Americas</option>
+  			  <option value="AE">AE - Armed Forces</option>
+  			  <option value="AP">AP - Armed Forces Pacific</option>
+  			  <option value="None">None</option>
+  			  </select>
+  			  <label >Card Type</label>
+  			<div class="payment-types radio-check">
+
+  				<input  type="radio" data-param="card_type" id="visa" name="payment-type" class="visa type" data-value="visa" required>
+  				<label class="fa fa-cc-visa" aria-hidden="true" for="visa"><span class="icon-fallback-text">Visa</span></label>
+
+  				<input id="mastercard" type="radio" data-param="card_type" name="payment-type" class="mastercard type" data-value="mastercard" required>
+  				<label class="mastercard fa fa-cc-mastercard" aria-hidden="true" for="mastercard"><span class="icon-fallback-text">Mastercard</span></label>
+
+  				<input type="radio" data-param="card_type" id="amex" name="payment-type" class="americanExpress type" data-value="American Express" required>
+  				<label class="americanExpress fa fa-cc-amex" aria-hidden="true" for="amex"><span class="icon-fallback-text">Amex</span></label>
+  			</div>
+  		
+  			<label for="card_number">* Card Number</label>
+  			<input  data-param="card_number" type="number" class="cc_num credit value-check" required=required>
+
+  			<label for="card_cvv">* CVV</label>
+  			<input data-param="card_cvv"  type="number" class="cc_cvv credit value-check" required=required>
+
+  			<label for="card_exp_date_month">Expiry Month (MM)</label>
+  			<input data-param="card_exp_date_month"  type="number" class="exp_month credit value-check" placeholder="MM" required=required>
+
+  			<label for="card_exp_date_year">Expiry Year (YYYY)</label>
+  			<input data-param="card_exp_date_year"  type="number" class="year credit value-check" placeholder="YYYY" required=required>
+
+  			<input type="submit" class="df-submit button active" value="Donate">
+  		</section>
+  	</div>
+   </form>
 
  <footer class="none">
 	 <div class="footer-top">
@@ -391,6 +954,7 @@
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/luminateExtend/1.7.1/luminateExtend.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"></script>
  <script src="scripts.js"></script>
 <body>
 <html>
