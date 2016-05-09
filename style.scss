@@ -147,6 +147,10 @@ h2{
 	font-weight: 700;
 }
 
+textarea{
+	min-height: 200px;
+}
+
 /*  ===========================
 animate
 ===========================*/
@@ -322,6 +326,9 @@ giving types
 			border-right: 2px solid $brightblue;
 			border-left: 2px solid $brightblue;
 		}
+		&:hover, &:focus{
+			background: $darkblue;
+		}
 		.svg-box{
 			margin-right: 20px;
 			display: inline-block;
@@ -446,7 +453,8 @@ form styling
 form{
 	padding-bottom: 100px;
 }
-form input, form select{display:block;
+form input, form select, textarea{
+			display:block;
 		padding: 10px 10px;
 		font-size: 18px;
 		width: 100%;
@@ -505,6 +513,19 @@ form label{
 
 .df-submit{
 	padding-top: 20px;
+}
+
+.card{
+	display:none;
+}
+
+
+.ecard:checked ~ .card{
+	display: block;
+}
+
+.give{
+	padding: 40px 0;
 }
 
 

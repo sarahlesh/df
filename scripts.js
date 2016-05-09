@@ -243,12 +243,6 @@ var params = 'method=getDonationFormInfo&response_format=json&form_id=3563&v=1.0
   //make query string 
 var getValues = function(){
 
-if($("#single_designee option:selected")){
-  var desId = $("#single_designee option:selected").attr("id");
-
-  queryString = queryString + "&designated."+desId +".amount&designated."+desId+".id" ;
-}
-
   var formType = $(".giving-type.active").attr("id");
   if(formType === "onetime"){
     queryString = queryString + "&form_id=3563";
@@ -259,6 +253,13 @@ if($("#single_designee option:selected")){
    if(formType === "tribute"){
     queryString = queryString + "&form_id=3562";
   }
+
+  desigID = $("." + formType + " #single_designee option:selected").val();
+
+  if(desigID !== ""){
+    queryString = queryString + "&designated."+ desigID +".amount&designated." + desigID + ".id"
+  }
+
 
   var val = $(".value-check").length;
   for(var i=0; i < val; i++) {
@@ -379,6 +380,15 @@ $(".chat").on("click", function(){
    $(".personal-info").on("click", ".next.active", function(){
      $('body').scrollTo('.payment',{duration:'slow'});
    })
+
+  $('#ecard').change(function () {
+      if ($(this).attr("checked")) {
+          // checked
+          return;
+      }
+      // not checked
+  });
+
 
 
  });
